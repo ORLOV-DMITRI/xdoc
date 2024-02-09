@@ -13,7 +13,7 @@ export default function Search({onCloseModal}: SearchType) {
                 <div className={styles.icon}>
                     <SearchIcon/>
                 </div>
-                <input className={styles.input}/>
+                <input className={styles.input} autoFocus={true}/>
                 <div className={styles.closeBtn} onClick={onCloseModal}>
                     <EscIcon/>
                 </div>

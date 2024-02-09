@@ -19,7 +19,7 @@ const options = [
     {value: 'css', label: 'CSS'},
 ];
 const languages = ['jsx', "tsx", 'js', 'config', 'scss', 'css'];
-
+const sections = ['React', 'NextJs', 'JavaScript', 'CSS', 'Config']
 
 
 export default function AddPageContent() {
@@ -28,7 +28,8 @@ export default function AddPageContent() {
         title: '',
         subtitle: '',
         snippets: [],
-        tags: []
+        tags: [],
+        section: '',
     });
 
     const [tag, setTag] = useState('')
@@ -65,6 +66,7 @@ export default function AddPageContent() {
         if (record.title.trim() === '' || record.subtitle.trim() === '') {
             toast.error('Пожалуйста заполните название и описание')
         } else {
+            console.log(record)
             toast.success('Ваш сниппет сохранен')
         }
     }
@@ -74,6 +76,18 @@ export default function AddPageContent() {
             <div className={styles.step}>
                 <div className={styles.stepsTitle}>
                     <h3>Шаг 1:</h3>
+                    <p>Выберите раздел</p>
+                </div>
+                <div className={styles.section}>
+                    <Select options={sections}
+                            value={record.section}
+                            onChange={(targetSection: string) => setRecord({...record, section: targetSection})}
+                    />
+                </div>
+            </div>
+            <div className={styles.step}>
+                <div className={styles.stepsTitle}>
+                    <h3>Шаг 2:</h3>
                     <p>Добавьте название и описание</p>
                 </div>
                 <div className={styles.fields}>
@@ -85,7 +99,7 @@ export default function AddPageContent() {
             </div>
             <div className={styles.step}>
                 <div className={styles.stepsTitle}>
-                    <h3>Шаг 2:</h3>
+                    <h3>Шаг 3:</h3>
                     <p>Добавьте один или более тэгов</p>
                 </div>
                 <div className={styles.fields}>
@@ -103,7 +117,7 @@ export default function AddPageContent() {
             </div>
             <div className={styles.step}>
                 <div className={styles.stepsTitle}>
-                    <h3>Шаг 3:</h3>
+                    <h3>Шаг 4:</h3>
                     <p>Добавьте код, если нужно стили и описание</p>
                 </div>
                 <div className={styles.codeBlock}>

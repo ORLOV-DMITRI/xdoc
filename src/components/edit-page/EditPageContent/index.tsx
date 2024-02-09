@@ -11,11 +11,12 @@ import {RecordType, Snippet} from "@/types/types";
 import DeleteIcon from '/public/svg/delete.svg'
 
 
-
 type EditPageType = {
     record: RecordType
 }
 const languages = ['jsx', "tsx", 'js', 'config', 'scss', 'css'];
+const sections = ['React', 'NextJs', 'JavaScript', 'CSS', 'Config']
+
 export default function EditPageContent({record}: EditPageType) {
 
     const [currentRecord, setCurrentRecord] = useState<RecordType>(record);
@@ -72,6 +73,17 @@ export default function EditPageContent({record}: EditPageType) {
                            onChange={(e) => setCurrentRecord({...currentRecord, title: e.target.value})}/>
                     <TextArea className={styles.subtitle} placeholder={'Описание*'} value={currentRecord.subtitle}
                               onChange={(e) => setCurrentRecord({...currentRecord, subtitle: e.target.value})}/>
+                </div>
+            </div>
+            <div className={styles.step}>
+                <div className={styles.stepsTitle}>
+                    <p>Измените раздел, если нужно</p>
+                </div>
+                <div className={styles.section}>
+                    <Select options={sections}
+                            value={record.section}
+                            onChange={(targetSection: string) => setCurrentRecord({...record, section: targetSection})}
+                    />
                 </div>
             </div>
             <div className={styles.step}>

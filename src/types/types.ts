@@ -9,5 +9,6 @@ export type RecordType = {
     title: string;
     subtitle: string;
     snippets: Snippet[];
-    tags: string[]
+    tags: string[];
+    section: string;
 }

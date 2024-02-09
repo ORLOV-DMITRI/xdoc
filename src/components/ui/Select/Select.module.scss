@@ -3,7 +3,6 @@
 .select {
   position: relative;
   width: 100%;
-  border: 1px solid rgb(0 97 255 / 40%);
 
   background-color: $bg;
   height: 46px;
@@ -49,6 +48,8 @@
   color: $white;
 }
 .selectedItem {
+  border: 1px solid rgb(0 97 255 / 40%);
+
   padding: 10px 20px;
   color: $white;
   font-size: 18px;
@@ -68,7 +69,7 @@
 .selectList {
   width: 100%;
   position: absolute;
-  top: 102%;
+  top: 110%;
   left: 0;
   right: 0;
   opacity: 0;

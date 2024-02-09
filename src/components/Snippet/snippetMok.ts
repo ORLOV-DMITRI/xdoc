@@ -171,5 +171,6 @@ export const page: RecordType = {
     title: 'Modal Window',
     subtitle: 'Компонент который используется для открытия модального окна и закрытия при клике вне области контента',
     snippets: snippets,
-    tags: ['React']
+    tags: ['React'],
+    section: 'React',
 }

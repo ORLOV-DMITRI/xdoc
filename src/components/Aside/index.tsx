@@ -5,16 +5,16 @@ import {useState} from "react";
 import Modal from "@/components/ui/Modal";
 import SearchButton from "@/components/ui/SearchButton";
 import Search from "@/components/Search";
-import DocIcon from '/public/svg/doc.svg'
 import BookIcon from '/public/svg/book.svg'
 import {usePathname} from "next/navigation";
 import cn from "classnames";
+import useOpenSearchModal from "@/hooks/useOpenSearchModal";
 
 export default function Aside() {
     const [isOpenModal, setIsOpenModal] = useState(false)
-
-
     const path = usePathname()
+
+    useOpenSearchModal(() => setIsOpenModal(true))
     return (
         <div className={styles.aside}>
 
@@ -22,7 +22,7 @@ export default function Aside() {
                 <div className={styles.search}>
                     <SearchButton onOpenModal={() => setIsOpenModal(true)}/>
                 </div>
-                <div className={cn(styles.info,  path === '/' && styles.infoActive)}>
+                <div className={cn(styles.info, path === '/' && styles.infoActive)}>
                     <div className={cn(styles.infoItem)}>
                         <BookIcon/>
                         Введение
