@@ -1,0 +1,24 @@
+@import "/public/styles/variables";
+
+.editor {
+  //background-color: #fff;
+  background-color: rgb(39, 39, 42);
+  border-radius: 7px;
+  min-height: 300px;
+
+
+  textarea {
+    &:focus-visible {
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+      border: 1px solid $white;
+    }
+
+    &::placeholder {
+      color: $white-gray;
+    }
+
+  }
+
+
+}

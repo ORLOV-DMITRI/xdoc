@@ -1,0 +1,10 @@
+@import "/public/styles/variables";
+
+
+.menu {
+  width: 250px;
+  position: sticky;
+  border-left: 1px solid $border;
+  height: 100vh;
+  right: 8%;
+}

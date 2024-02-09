@@ -1,0 +1,59 @@
+@mixin fullhd {
+  @media (width <= 1920px) {
+    @content;
+  }
+}
+
+@mixin xl-big {
+  @media (width <= 1600px) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (width <= 1440px) {
+    @content;
+  }
+}
+
+@mixin xl-lg {
+  @media (width <= 1366px) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (width <= 1280px) {
+    @content;
+  }
+}
+
+@mixin lg-md {
+  @media (width <= 1024px) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (width <= 992px) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (width <= 768px) {
+    @content;
+  }
+}
+
+@mixin xs {
+  @media (width <= 540px) {
+    @content;
+  }
+}
+@mixin xs-mini {
+  @media (width <= 400px) {
+    @content;
+  }
+}
+

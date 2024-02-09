@@ -1,0 +1,95 @@
+@import "/public/styles/variables";
+
+.select {
+  position: relative;
+  width: 100%;
+  border: 1px solid rgb(0 97 255 / 40%);
+
+  background-color: $bg;
+  height: 46px;
+  border-radius: 6px;
+  z-index: 100;
+  transition: 0.3s;
+
+
+
+  & .open {
+
+
+  }
+}
+.select.open {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.open {
+
+  .select {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    border: 1px solid $white;
+  }
+  .selectList {
+    opacity: 1;
+    visibility: visible;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+
+
+  }
+  .selectedItem {
+
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+.isSelected {
+  background-color: $gray;
+  color: $white;
+}
+.selectedItem {
+  padding: 10px 20px;
+  color: $white;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  &:hover {
+    background-color: $gray;
+  }
+  svg {
+    stroke: $white;
+    transition: 0.3s;
+  }
+}
+.selectList {
+  width: 100%;
+  position: absolute;
+  top: 102%;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  background-color: $bg;
+  transition: 0.3s;
+  border: 1px solid rgb(0 97 255 / 40%);
+  border-radius: 6px;
+
+}
+.item {
+  text-transform: uppercase;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  color: $white-gray;
+
+  &:hover {
+    background-color: $gray;
+    color: $white;
+  }
+
+}

@@ -1,0 +1,43 @@
+@import "/public/styles/variables";
+
+.code {
+
+  position: relative;
+
+  span {
+    font-size: 14px;
+
+  }
+
+  pre {
+
+    border-bottom-left-radius: 21px;
+    border-bottom-right-radius: 21px;
+    background-color: black;
+  }
+}
+
+.codeInfo {
+  width: 100%;
+  background-color: $gray;
+  display: flex;
+  padding: 10px 16px;
+  align-items: center;
+  justify-content: space-between;
+  border-top-left-radius: 21px;
+  border-top-right-radius: 21px;
+}
+.copy {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  font-size: 14px;
+
+  svg {
+    //stroke: $white
+  }
+}
+.codeLanguage {
+  font-size: 14px;
+}

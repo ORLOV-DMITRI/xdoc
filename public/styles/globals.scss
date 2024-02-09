@@ -1,0 +1,95 @@
+@import "/public/styles/variables";
+@import "/public/styles/media";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  background-color: $bg;
+  color: $white;
+}
+
+body {
+
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 70px;
+
+  @include xl-lg {
+    padding: 0 60px;
+  }
+
+  @include lg-md {
+    padding: 0 40px;
+  }
+
+  @include md {
+    padding: 0 32px;
+  }
+
+  @include xs {
+    padding: 0 20px;
+  }
+}
+
+.content {
+  width: calc(100% - 280px);
+  margin-left: 280px;
+  padding: 40px;
+  flex: 1;
+  display: flex;
+}
+
+.main {
+  width: 100%;
+  display: flex;
+}
+
+::selection {
+  background: $gray; /* Цвет фона для выделенного текста */
+}
+
+
+
+.npm__react-simple-code-editor__textarea::selection {
+  background-color: rgba(2, 8, 23, 0.8) !important; /* Цвет фона для выделенного текста */
+  color: $white !important; /* Цвет текста для выделенного текста */
+}
+
+
+/* Стилизация для всех скроллбаров на странице */
+::-webkit-scrollbar {
+  width: 18px; /* ширина скроллбара */
+}
+
+/* Обработка трека (полосы прокрутки), на котором движется ползунок */
+::-webkit-scrollbar-track {
+  background: #333; /* цвет фона трека */
+}
+
+/* Обработка самого ползунка скроллбара */
+::-webkit-scrollbar-thumb {
+  background: #444; /* цвет ползунка */
+  border-radius: 10px; /* скругление углов ползунка */
+  border: 3px solid #333; /* рамка вокруг ползунка с цветом фона трека */
+}
+
+/* Обработка состояния наведения на ползунок скроллбара */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* цвет ползунка при наведении */
+}

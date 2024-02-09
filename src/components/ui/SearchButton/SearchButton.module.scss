@@ -1,0 +1,36 @@
+@import "/public/styles/variables";
+
+.searchBox {
+  background-color: $gray;
+  border-radius: 6px;
+  margin-right: 20px;
+  cursor: pointer;
+
+
+  &:hover {
+    filter: brightness(130%);
+  }
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  gap: 10px;
+
+  padding: 12px 18px 12px 8px;
+
+  svg {
+    width: 17px;
+    height: 17px;
+
+    stroke: $white;
+
+  }
+
+  span {
+    margin-left: auto;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}

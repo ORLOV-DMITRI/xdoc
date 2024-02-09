@@ -1,0 +1,18 @@
+@import "/public/styles/variables";
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(2, 8, 23, 0.6);
+  border-bottom: 1px solid $border;
+
+}
+.nav {
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+.logo {
+  font-size: 36px;
+}

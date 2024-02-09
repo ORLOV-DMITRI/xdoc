@@ -1,0 +1,23 @@
+@import "/public/styles/variables";
+
+
+.input {
+  border: 1px solid rgb(0 97 255 / 40%);
+  padding: 10px 12px;
+  background-color: $bg;
+  color: $white;
+  font-size: 16px;
+  height: 46px;
+  line-height: 20px;
+  transition: 0.15s;
+  border-radius: 6px;
+
+  &:focus-visible {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    border: 1px solid $white;
+  }
+  &::placeholder {
+    color: $white-gray;
+  }
+}
