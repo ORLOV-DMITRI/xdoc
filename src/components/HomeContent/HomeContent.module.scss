@@ -1,0 +1,54 @@
+@import "/public/styles/media";
+@import "/public/styles/variables";
+
+.homeContent {
+    display: flex;;
+    flex-direction: column;
+    gap: 30px;
+    color: $white-gray;
+}
+.title {
+    color: $white;
+
+    span  {
+        font-size: 40px;
+    }
+}
+.logo {
+    font-size: 20px;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    font-size: 22px;
+    line-height: 140%;
+    gap: 10px;
+
+    span:first-child {
+        color: $white;
+        font-weight: 500;
+    }
+
+}
+.infoList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.listTitle {
+    font-size: 20px;
+}
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.infoItem {
+    font-size: 17px;
+    line-height: 150%;
+
+    span {
+        color: $white;
+        padding-right: 5px;
+    }
+}

@@ -9,6 +9,7 @@ import Button from "@/components/ui/Button";
 import toast from "react-hot-toast";
 import DeleteIcon from '/public/svg/delete.svg'
 import {RecordType, Snippet} from "@/types/types";
+import {useAddRecord} from "@/react-query/record/useAddRecord";
 
 const options = [
     {value: 'jsx', label: 'JSX'},
@@ -62,12 +63,13 @@ export default function AddPageContent() {
         setRecord({...record, snippets: filteredSnippets});
     };
 
+    const {mutate: addRecord} = useAddRecord()
     const saveSnippet = () => {
         if (record.title.trim() === '' || record.subtitle.trim() === '') {
             toast.error('Пожалуйста заполните название и описание')
         } else {
-            console.log(record)
             toast.success('Ваш сниппет сохранен')
+            addRecord(record)
         }
     }
     return (<div className={styles.addPage}>

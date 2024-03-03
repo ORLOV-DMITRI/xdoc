@@ -12,3 +12,13 @@ export type RecordType = {
     tags: string[];
     section: string;
 }
+
+export type SignUpType = {
+    email: string,
+    password: string
+}
+export type SignUpResponse = {
+    id: string;
+    email: string;
+    token: string;
+}

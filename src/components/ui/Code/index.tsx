@@ -23,7 +23,6 @@ type CodeType = {
 }
 
 export default function Code({code, language}: CodeType) {
-    console.log(language)
     const [isCopied, setIsCopied] = useState(false)
 
     const copyToClipboard = () => {

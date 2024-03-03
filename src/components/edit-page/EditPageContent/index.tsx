@@ -34,7 +34,6 @@ export default function EditPageContent({record}: EditPageType) {
     }
     const handleDeleteTag = (deleteTag: string) => {
         const filteredTags = currentRecord.tags.filter((tag => tag !== deleteTag))
-        console.log(filteredTags)
         setCurrentRecord({...currentRecord, tags: filteredTags})
     }
 
@@ -58,7 +57,6 @@ export default function EditPageContent({record}: EditPageType) {
         } else {
             toast.success('Ваш сниппет сохранен')
         }
-        console.log(currentRecord.title)
 
     }
     return (<div className={styles.addPage}>

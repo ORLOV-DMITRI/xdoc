@@ -1,10 +1,10 @@
 'use client'
 import styles from './Aside.module.scss'
-import {asideMok} from "@/components/Aside/asideMok";
+import {asideMok} from "@/components/layouts/Aside/asideMok";
 import {useState} from "react";
 import Modal from "@/components/ui/Modal";
 import SearchButton from "@/components/ui/SearchButton";
-import Search from "@/components/Search";
+import Search from "../Search";
 import BookIcon from '/public/svg/book.svg'
 import {usePathname} from "next/navigation";
 import cn from "classnames";

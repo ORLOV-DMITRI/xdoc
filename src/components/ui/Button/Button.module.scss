@@ -2,42 +2,48 @@
 
 
 .white {
-  background-color: $white;
-  color: $dark-text;
-outline: none;
-  border: none;
-  &:hover{
-    background-color: $white-gray;
-  }
+    background-color: $white;
+    color: $dark-text;
+    outline: none;
+    border: none;
+
+    &:hover {
+        background-color: $white-gray;
+    }
 }
+
 .green {
-  background-color: $green;
-  border: 1px solid $dar-border;
-  color: rgb(5, 46, 22);
-  &:hover{
-    background-color: rgba(34, 197, 94, 0.8);
-  }
+    background-color: $green;
+    border: 1px solid $dar-border;
+    color: rgb(5, 46, 22);
+
+    &:hover {
+        background-color: rgba(34, 197, 94, 0.8);
+    }
 }
+
 .red {
-  background-color: $red;
-  border: 1px solid $dar-border;
-  color: $white;
-  &:hover{
-    background-color:rgba(225, 29, 72, 0.8);
-  }
+    background-color: $red;
+    border: 1px solid $dar-border;
+    color: $white;
+
+    &:hover {
+        background-color: rgba(225, 29, 72, 0.8);
+    }
 }
+
 .btn {
-  padding: 8px 16px;
-  border-radius: 6px;
-  height: 46px;
-  font-weight: 700;
-  font-size: 14px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s;
-  cursor: pointer;
-  outline: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    height: 46px;
+    font-weight: 700;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    cursor: pointer;
+    outline: none;
 
 
 }

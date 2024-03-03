@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(uuid())
+  email      String   @unique
+  password   String
+  recordList Record[]
+}
+
+model Record {
+  id         String    @id @default(uuid())
+  title      String?
+  subtitle   String?
+  snippets   Snippet[]
+  tags       Tag[]
+  section    Sections  @relation(fields: [sectionsId], references: [id])
+  userId     String
+  sectionsId String
+  User       User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Snippet {
+  id          String   @id @default(uuid())
+  title       String
+  snippet     String
+  description String
+  languageId  String
+  recordId    String
+  language    Language @relation(fields: [languageId], references: [id])
+  record      Record?  @relation(fields: [recordId], references: [id])
+}
+
+model Sections {
+  id      String   @id @default(uuid())
+  name    String
+  records Record[]
+}
+
+model Language {
+  id       String    @id @default(uuid())
+  name     String
+  snippets Snippet[]
+}
+
+model Tag {
+  id      String   @id @default(uuid())
+  name    String
+  records Record[]
+}

@@ -1,0 +1,16 @@
+@import "/public/styles/variables";
+
+.btn {
+    height: 36px !important;
+    width: 100px;
+    user-select: none;
+}
+.btnAdd {
+    height: 36px !important;
+    user-select: none;
+}
+.right {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
