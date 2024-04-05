@@ -64,6 +64,8 @@ export async function LogInUser({email, password}: SignUpType) {
         throw new Error("Ошилбка Логина или Пароля");
     }
 }
+
+
 export async function CurrentUser() {
 
     const token = cookies().get('token')?.value;

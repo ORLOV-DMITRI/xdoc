@@ -1,17 +1,19 @@
-export type Snippet = {
-    title: string;
-    language: string;
-    snippet: string;
-    description: string;
-}
-
 export type RecordType = {
     title: string;
     subtitle: string;
-    snippets: Snippet[];
-    tags: string[];
+    snippet: string;
     section: string;
 }
+
+export type SaveRecordType = {
+    id?: string
+} & RecordType
+
+export type SectionType = {
+    id: string
+    name: string;
+}
+
 
 export type SignUpType = {
     email: string,
@@ -21,4 +23,22 @@ export type SignUpResponse = {
     id: string;
     email: string;
     token: string;
+}
+export interface Root {
+    sections: Section[]
+}
+
+export interface Section {
+    id: string
+    name: string
+    records: Record[]
+}
+
+export interface Record {
+    id: string
+    title: string
+    subtitle: string
+    snippet: string
+    userId: string
+    sectionsId: string
 }

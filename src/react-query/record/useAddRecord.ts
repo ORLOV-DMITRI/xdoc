@@ -1,15 +1,32 @@
-import {RecordType, SignUpResponse, SignUpType} from "@/types/types";
-import {LogInUser} from "../../../server/auth-server";
-import toast from "react-hot-toast";
-import Cookies from "js-cookie";
+import {SaveRecordType} from "@/types/types";
 import {queryKeys} from "@/react-query/constants";
-import {AddRecord} from "../../../server/add-record";
-import {useMutation} from "@tanstack/react-query";
+import {useMutation, useQueryClient} from "@tanstack/react-query";
+
+
+export const addRecord = async (record : SaveRecordType)  => {
+
+    try {
+        const res = await fetch('/api/record', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(record),
+        })
+        return res.json();
+    }catch (error) {
+        throw new Error('Ошибка')
+    }
+
+}
 
 export const useAddRecord = () => {
-
+    const queryClient = useQueryClient();
     const {mutate} = useMutation({
-        mutationFn: (data: RecordType) => AddRecord(data),
+        mutationFn: (data: SaveRecordType) => addRecord(data),
+        onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: [queryKeys.records]});
+        }
 
     })
     return {mutate}

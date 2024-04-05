@@ -1,22 +1,29 @@
+'use client'
 import styles from './Header.module.scss'
 import {Gruppo} from 'next/font/google'
 import cn from "classnames";
 import AuthBlock from "@/components/auth/AuthBlock";
-import {CurrentUser} from "../../../../server/auth-server";
+import {useCurrentUser} from "@/react-query/auth/useCurrentUser";
+import Link from "next/link";
 
 const logoFonts = Gruppo({subsets: ["latin"], weight: ['400', '400']});
 
 
-export default async function Header() {
-    const user = await CurrentUser()
+export default function Header() {
+    const {data: user, isLoading} = useCurrentUser()
+
+    const isAuth = user?.status === 200;
+
 
     return (
         <header className={styles.header}>
             <div className="container">
                 <div className={styles.nav}>
-                    <div className={cn(styles.logo, logoFonts.className)}>XDOC</div>
+                    <Link href={'/'} className={cn(styles.logo, logoFonts.className)}>XDOC</Link>
 
-                     <AuthBlock isAuthenticated={!!user}/>
+                    {isLoading ? (<div>Загрузка</div>) :
+                        (<AuthBlock isAuthenticated={isAuth}/>)}
+
 
                 </div>
             </div>

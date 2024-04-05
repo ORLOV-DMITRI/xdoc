@@ -7,6 +7,7 @@ const logoFonts = Gruppo({subsets: ["latin"], weight: ["400", "400"]});
 export default function HomeContent() {
 
     const logo = <span className={cn(logoFonts.className, styles.logo)}>XDOC</span>;
+
     return (
         <div className={styles.homeContent}>
             <h1 className={styles.title}>

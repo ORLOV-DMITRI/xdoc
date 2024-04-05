@@ -1,13 +1,16 @@
 import styles from './Input.module.scss'
+import cn from "classnames";
 
-type InputType = {} & React.InputHTMLAttributes<HTMLInputElement>
+type InputType = {
+    className?:string
+} & React.InputHTMLAttributes<HTMLInputElement>
 
-export default function Input({...props}: InputType) {
+export default function Input({ className,...props}: InputType) {
 
 
-    
+
     return (
-        <input className={styles.input} {...props}/>
+        <input className={cn(styles.input, className)} {...props}/>
 
     );
 };

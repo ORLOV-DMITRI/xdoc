@@ -6,7 +6,7 @@ import {queryKeys} from "@/react-query/constants";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
 
-export function useLogout() {
+export function logout() {
     const router = useRouter();
     const queryClient = useQueryClient();
 

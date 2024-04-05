@@ -18,41 +18,17 @@ model User {
 }
 
 model Record {
-  id         String    @id @default(uuid())
+  id         String   @id @default(uuid())
   title      String?
   subtitle   String?
-  snippets   Snippet[]
-  tags       Tag[]
-  section    Sections  @relation(fields: [sectionsId], references: [id])
+  snippet    String?
   userId     String
   sectionsId String
-  User       User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model Snippet {
-  id          String   @id @default(uuid())
-  title       String
-  snippet     String
-  description String
-  languageId  String
-  recordId    String
-  language    Language @relation(fields: [languageId], references: [id])
-  record      Record?  @relation(fields: [recordId], references: [id])
+  section    Sections @relation(fields: [sectionsId], references: [id])
+  User       User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Sections {
-  id      String   @id @default(uuid())
-  name    String
-  records Record[]
-}
-
-model Language {
-  id       String    @id @default(uuid())
-  name     String
-  snippets Snippet[]
-}
-
-model Tag {
   id      String   @id @default(uuid())
   name    String
   records Record[]

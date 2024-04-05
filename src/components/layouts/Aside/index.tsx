@@ -9,12 +9,21 @@ import BookIcon from '/public/svg/book.svg'
 import {usePathname} from "next/navigation";
 import cn from "classnames";
 import useOpenSearchModal from "@/hooks/useOpenSearchModal";
+import {useGetRecords} from "@/react-query/record/useGetAllRecords";
+import {Section} from "@/types/types";
+import {useGetSections} from "@/react-query/section/useGetSections";
 
-export default function Aside() {
+export default function Aside({sections} : {sections: Section[]}) {
     const [isOpenModal, setIsOpenModal] = useState(false)
     const path = usePathname()
 
     useOpenSearchModal(() => setIsOpenModal(true))
+
+    const allSections = useGetRecords(sections)
+
+    const sectionsArray: Section[] = allSections.sections;
+
+
     return (
         <div className={styles.aside}>
 
@@ -29,13 +38,13 @@ export default function Aside() {
                     </div>
                 </div>
                 <ul className={styles.categoryList}>
-                    {asideMok.map(category => (
+                    {sectionsArray.map(category => (
                         <li className={styles.category} key={category.id}>
-                            <div className={styles.categoryName}>{category.category}</div>
+                            <div className={styles.categoryName}>{category.name}</div>
                             <ul className={styles.categoryItems}>
-                                {category.items.map(item => (
+                                {category.records.map(item => (
                                     <li className={styles.item} key={item.id}>
-                                        {item.name}
+                                        {item.title}
                                     </li>
                                 ))}
                             </ul>

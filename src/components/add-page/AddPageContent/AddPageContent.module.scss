@@ -1,5 +1,20 @@
 @import "/public/styles/variables";
 
+.createSection {
+  width: 400px;
+  border-radius: 10px;
+  background-color: $bg;
+  padding: 20px 35px 35px 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.createSectionBtn {
+  width: 100%;
+}
+.createSectionInput {
+  width: 100%;
+}
 
 .addPage {
   width: 100%;

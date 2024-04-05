@@ -2,16 +2,24 @@ import {useMutation, useQueryClient} from '@tanstack/react-query';
 import toast from "react-hot-toast";
 import {queryKeys} from "@/react-query/constants";
 import {SignUpResponse, SignUpType} from "@/types/types";
-import {LogInUser} from "../../../server/auth-server";
 import Cookies from "js-cookie";
 
-
+export const loginUser = async (userData: SignUpType) :  Promise<{id: string, email: string, token: string}> => {
+    const res = await fetch('/api/user/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+    })
+    return res.json();
+}
 
 export const useLogIn = () => {
     const queryClient = useQueryClient();
 
     const {mutate} = useMutation({
-        mutationFn: (userData: SignUpType) => LogInUser(userData),
+        mutationFn: (userData: SignUpType) => loginUser(userData),
         onSuccess: ({token}: SignUpResponse) => {
             toast.success(`Успешная авторизация`)
             Cookies.set('token', token, {expires: 30});

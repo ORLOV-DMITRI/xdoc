@@ -19,10 +19,9 @@ const GroceryItem: React.FC<GroceryItemProps> = ({ item }) => {
 `
 type CodeType = {
     code?: string
-    language: string
 }
 
-export default function Code({code, language}: CodeType) {
+export default function Code({code}: CodeType) {
     const [isCopied, setIsCopied] = useState(false)
 
     const copyToClipboard = () => {
@@ -44,7 +43,6 @@ export default function Code({code, language}: CodeType) {
     return (
         <div className={styles.code}>
             <div className={styles.codeInfo}>
-                <div className={styles.codeLanguage}>{language}</div>
                 <div onClick={copyToClipboard} className={styles.copy}>
                     {!isCopied && (
                         <>
@@ -64,7 +62,7 @@ export default function Code({code, language}: CodeType) {
             <Highlight
                 theme={themes.oceanicNext}
                 code={code}
-                language={language}
+                language={'js'}
             >
                 {({className, style, tokens, getLineProps, getTokenProps}) => (
                     <pre style={style}>

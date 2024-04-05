@@ -6,7 +6,8 @@ import Aside from "../src/components/layouts/Aside";
 import Menu from "@/components/Menu";
 import {ReactNode} from "react";
 import Providers from "@/utility/providers";
-import {CurrentUser} from "../server/auth-server";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import {getRecords} from "@/react-query/record/useGetAllRecords";
 
 const inter = Inter({subsets: ["latin"]});
 const ibmPlexMono = IBM_Plex_Mono({subsets: ["latin"], weight: ['400', '500', '700'], display: 'swap'});
@@ -17,18 +18,27 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({children}: Readonly<{ children: ReactNode; }>) {
+
+    const res = await fetch(process.env.URL + '/api/record', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    const sections = await res.json();
     return (
         <html lang="en">
         <body className={ibmPlexMono.className}>
         <Providers>
             <Header/>
             <div className={'container main'}>
-                <Aside/>
+                <Aside sections={sections}/>
                 <div className={'content'}>
                     {children}
                 </div>
                 <Menu/>
             </div>
+            <ReactQueryDevtools/>
         </Providers>
         </body>
         </html>

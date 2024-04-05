@@ -6,12 +6,23 @@ import {SignUpResponse, SignUpType} from "@/types/types";
 import Cookies from 'js-cookie';
 import {RegisterUser} from "../../../server/auth-server";
 
+export const registerUser = async (newUserData: SignUpType) :  Promise<{id: string, email: string, token: string}> => {
+    const res = await fetch('/api/user/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newUserData),
+    })
+    return res.json();
+}
 
 export const useRegister = () => {
     const queryClient = useQueryClient();
 
     const {mutate} = useMutation({
-        mutationFn: (newUserData: SignUpType) => RegisterUser(newUserData),
+
+        mutationFn: (newUserData: SignUpType) => registerUser(newUserData),
 
         onSuccess: ({token}: SignUpResponse) => {
             toast.success(`Успешная регистрация`)

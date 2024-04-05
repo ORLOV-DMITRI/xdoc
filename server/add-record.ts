@@ -8,7 +8,6 @@ import {cookies} from "next/headers";
 
 
 export async function AddRecord(data: RecordType) {
-    console.log(data)
 
     const result = await db.record.create({
         data: {
