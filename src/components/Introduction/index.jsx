@@ -1,10 +1,10 @@
-import styles from "./HomeContent.module.scss";
+import styles from "./index.module.scss";
 import {Gruppo} from "next/font/google";
 import cn from "classnames";
 
 const logoFonts = Gruppo({subsets: ["latin"], weight: ["400", "400"]});
 
-export default function HomeContent() {
+export default function Introduction() {
 
     const logo = <span className={cn(logoFonts.className, styles.logo)}>XDOC</span>;
 

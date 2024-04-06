@@ -3,11 +3,10 @@ import {IBM_Plex_Mono, Inter} from "next/font/google";
 import "../public/styles/globals.scss";
 import Header from "../src/components/layouts/Header";
 import Aside from "../src/components/layouts/Aside";
-import Menu from "@/components/Menu";
 import {ReactNode} from "react";
 import Providers from "@/utility/providers";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import {getRecords} from "@/react-query/record/useGetAllRecords";
+import Menu from "@/components/Menu";
 
 const inter = Inter({subsets: ["latin"]});
 const ibmPlexMono = IBM_Plex_Mono({subsets: ["latin"], weight: ['400', '500', '700'], display: 'swap'});

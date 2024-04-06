@@ -1,6 +1,6 @@
-import AddPageContent from "@/components/add-page/AddPageContent";
+import AddPageContent from "../../src/components/AddRecord";
 
-export default async function AddPage() {
+export default async function AddRecordPage() {
 
     return <AddPageContent/>
 }

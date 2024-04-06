@@ -1,7 +1,7 @@
-import EditPageContent from "@/components/edit-page/EditPageContent";
-import {page, snippetMok} from "@/components/Snippet/snippetMok";
+import {page} from "@/components/RecordDetail/snippetMok";
+import EditRecord from "../../src/components/EditRecord";
 
-export default function EditPage() {
+export default function EditRecordPage() {
 
-    return <EditPageContent record={page}/>;
+    return <EditRecord record={page}/>;
 };

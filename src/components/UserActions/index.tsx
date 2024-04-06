@@ -1,8 +1,8 @@
 'use client'
-import styles from './AuthBlock.module.scss'
+import styles from './index.module.scss'
 import Button from "@/components/ui/Button";
 import Modal from "@/components/ui/Modal";
-import AuthModal from "@/components/auth/AuthModal";
+import AuthModal from "../AuthModal";
 import {useState} from "react";
 import {usePathname, useRouter} from "next/navigation";
 import Cookies from "js-cookie";
@@ -17,7 +17,7 @@ type AuthBlockType = {
 }
 
 
-export default function AuthBlock({isAuthenticated}: AuthBlockType) {
+export default function UserActions({isAuthenticated}: AuthBlockType) {
     const [isOpenModal, setIsOpenModal] = useState(false)
 
     const path = usePathname()

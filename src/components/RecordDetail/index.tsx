@@ -1,9 +1,9 @@
-import styles from './Snippet.module.scss'
+import styles from './index.module.scss'
 import Code from "@/components/ui/Code";
-import {page} from "@/components/Snippet/snippetMok";
+import {page} from "@/components/RecordDetail/snippetMok";
 
 
-export default function Snippet() {
+export default function RecordDetail() {
 
     const {title, snippet, subtitle} = page;
     return (

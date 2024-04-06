@@ -1,5 +1,5 @@
-import HomeContent from '@/components/HomeContent/index'
+import Introduction from "@/components/Introduction";
 
 export default function Home() {
-    return <HomeContent/>
+    return <Introduction/>
 }

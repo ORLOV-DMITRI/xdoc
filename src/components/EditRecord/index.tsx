@@ -1,5 +1,5 @@
 'use client'
-import styles from './EditPageContent.module.scss'
+import styles from './index.module.scss'
 import {useState} from "react";
 import toast from "react-hot-toast";
 import Input from "@/components/ui/Input";
@@ -17,7 +17,7 @@ type EditPageType = {
 const languages = ['jsx', "tsx", 'js', 'config', 'scss', 'css'];
 const sections = ['React', 'NextJs', 'JavaScript', 'CSS', 'Config']
 
-export default function EditPageContent({record}: EditPageType) {
+export default function EditRecord({record}: EditPageType) {
 
     const [currentRecord, setCurrentRecord] = useState<RecordType>(record);
 

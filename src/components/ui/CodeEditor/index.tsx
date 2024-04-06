@@ -17,7 +17,7 @@ type CodeType = {
 
 export default function CodeEditor({language, code, onChange}: CodeType) {
 
-    const [currentCode, setCurrentCode] = useState(code ? code : 'Snippet Code');
+    const [currentCode, setCurrentCode] = useState(code ? code : 'RecordDetail Code');
 
     const onValueChange = (code: string) => {
         setCurrentCode(code);
