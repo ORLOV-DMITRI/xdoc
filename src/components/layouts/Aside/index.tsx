@@ -1,6 +1,5 @@
 'use client'
 import styles from './Aside.module.scss'
-import {asideMok} from "@/components/layouts/Aside/asideMok";
 import {useState} from "react";
 import Modal from "@/components/ui/Modal";
 import SearchButton from "@/components/ui/SearchButton";
@@ -11,7 +10,7 @@ import cn from "classnames";
 import useOpenSearchModal from "@/hooks/useOpenSearchModal";
 import {useGetRecords} from "@/react-query/record/useGetAllRecords";
 import {Section} from "@/types/types";
-import {useGetSections} from "@/react-query/section/useGetSections";
+import Link from "next/link";
 
 export default function Aside({sections} : {sections: Section[]}) {
     const [isOpenModal, setIsOpenModal] = useState(false)
@@ -39,13 +38,13 @@ export default function Aside({sections} : {sections: Section[]}) {
                 </div>
                 <ul className={styles.categoryList}>
                     {sectionsArray.map(category => (
-                        <li className={styles.category} key={category.id}>
+                        <li  className={styles.category} key={category.id}>
                             <div className={styles.categoryName}>{category.name}</div>
                             <ul className={styles.categoryItems}>
                                 {category.records.map(item => (
-                                    <li className={styles.item} key={item.id}>
+                                    <Link href={`/snippet/${item.id}`} className={styles.item} key={item.id}>
                                         {item.title}
-                                    </li>
+                                    </Link>
                                 ))}
                             </ul>
 

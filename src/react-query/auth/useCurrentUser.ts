@@ -15,6 +15,7 @@ export function useCurrentUser() {
     const {data, error, isError, isLoading} = useQuery({
         queryKey: [queryKeys.user],
         queryFn: currentUser,
+        retry: 0
     });
     return {data, isLoading};
 }

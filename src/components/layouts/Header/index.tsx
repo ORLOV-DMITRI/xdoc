@@ -10,6 +10,7 @@ const logoFonts = Gruppo({subsets: ["latin"], weight: ['400', '400']});
 
 
 export default function Header() {
+
     const {data: user, isLoading} = useCurrentUser()
 
     const isAuth = user?.status === 200;

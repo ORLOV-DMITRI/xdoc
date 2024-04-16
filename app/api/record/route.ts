@@ -18,6 +18,7 @@ export async function POST(request: Request) {
         }
 
 
+
         const newRecord = await db.record.create({
             data: {
                 title: title,

@@ -1,7 +1,7 @@
 @import "/public/styles/variables";
 
 .code {
-
+  min-height: 300px;
   position: relative;
 
   span {
@@ -10,7 +10,7 @@
   }
 
   pre {
-
+    min-height: 300px;
     border-bottom-left-radius: 21px;
     border-bottom-right-radius: 21px;
     background-color: black;
