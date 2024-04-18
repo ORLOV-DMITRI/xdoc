@@ -1,0 +1,16 @@
+@import "/public/styles/variables";
+
+.menu {
+    width: 250px;
+    border-left: 1px solid $border;
+    height: 100vh;
+    padding-left: 20px;
+    position: sticky  ;
+}
+.btnBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 10;
+    width: 250px;
+}

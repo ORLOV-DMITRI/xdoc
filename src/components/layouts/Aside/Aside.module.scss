@@ -116,6 +116,9 @@
   background-color: transparent;
 }
 
-
+.active {
+  color: $green;
+  border-left: 1px solid $green;
+}
 
 

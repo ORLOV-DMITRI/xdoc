@@ -50,9 +50,10 @@ a {
 .content {
   width: calc(100% - 280px);
   margin-left: 280px;
-  padding: 40px;
+  padding: 0 0 40px 40px;
   flex: 1;
   display: flex;
+  gap: 20px;
 }
 
 .main {

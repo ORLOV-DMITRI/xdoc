@@ -35,7 +35,6 @@ export default async function RootLayout({children}: Readonly<{ children: ReactN
                 <div className={'content'}>
                     {children}
                 </div>
-                <Menu/>
             </div>
             <ReactQueryDevtools/>
         </Providers>

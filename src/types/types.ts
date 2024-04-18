@@ -39,6 +39,7 @@ export interface Record {
     title: string
     subtitle: string
     snippet: string
+    section: string
     userId: string
     sectionsId: string
 }

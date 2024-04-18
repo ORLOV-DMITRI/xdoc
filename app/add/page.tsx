@@ -15,6 +15,7 @@ import {useRouter} from "next/navigation";
 import {useCurrentUser} from "@/react-query/auth/useCurrentUser";
 import {useGetSections} from "@/react-query/section/useGetSections";
 import useStringComparison from "@/hooks/useStringComparison";
+import {AddRecordMenu} from "@/components/AddRecordMenu";
 
 
 export default function AddRecord() {
@@ -34,9 +35,12 @@ export default function AddRecord() {
     });
     const [section, setSection] = useState<string>('')
 
+    useEffect(() => {
+        if(sections.length === 0) return
+        setRecord({...record, section: sections[0].name})
+    },[sections])
 
     useEffect(() => {
-        console.log(user)
         if (user?.status === 200) return
         if (user?.status === 400) {
             router.push('/')
@@ -85,61 +89,60 @@ export default function AddRecord() {
     }
 
 
-    return (<div className={styles.addPage}>
-        <h1>Добвление нового Сниппета</h1>
-        <div className={styles.steps}>
-            <div className={styles.step}>
-                <div className={styles.stepsTitle}>
-                    <h3>Шаг 1:</h3>
-                    <p>Выберите раздел</p>
+    return (
+        <>
+            <div className={styles.addPage}>
+                <h1>Добвление нового Сниппета</h1>
+                <div className={styles.steps}>
+                    <div className={styles.step}>
+                        <div className={styles.stepsTitle}>
+                            <h3>Шаг 1:</h3>
+                            <p>Выберите раздел</p>
+                        </div>
+                        <div className={styles.section}>
+                            <Select options={sections}
+                                    onSavedNew={() => setIsOpenModal(true)}
+                                    value={record.section}
+                                    onChange={(targetSection: string) => setRecord({...record, section: targetSection})}
+                            />
+                        </div>
+                    </div>
+                    <div className={styles.step}>
+                        <div className={styles.stepsTitle}>
+                            <h3>Шаг 2:</h3>
+                            <p>Добавьте название и описание</p>
+                        </div>
+                        <div className={styles.fields}>
+                            <Input placeholder={'Название*'} value={record.title}
+                                   onChange={(e) => setRecord({...record, title: e.target.value})}/>
+                            <TextArea className={styles.subtitle} placeholder={'Описание*'} value={record.subtitle}
+                                      onChange={(e) => setRecord({...record, subtitle: e.target.value})}/>
+                        </div>
+                    </div>
+                    <div className={styles.step}>
+                        <div className={styles.stepsTitle}>
+                            <h3>Шаг 4:</h3>
+                            <p>Добавьте код, если нужно стили и описание</p>
+                        </div>
+                        <div className={styles.codeBlock}>
+                            <CodeEditor language={'js'} code={''}
+                                        onChange={(value: string) => handleSnippetChange(value)}
+                            />
+                        </div>
+                    </div>
                 </div>
-                <div className={styles.section}>
-                    <Select options={sections}
-                            onSavedNew={() => setIsOpenModal(true)}
-                            value={record.section}
-                            onChange={(targetSection: string) => setRecord({...record, section: targetSection})}
-                    />
-                </div>
+                <Modal isOpen={isOpenModal} onClose={() => setIsOpenModal(false)}>
+                    <div className={styles.createSection}>
+                        <div className={styles.createSectionTitle}>Создание нового раздела</div>
+                        <Input placeholder={'Название*'} value={section} className={styles.createSectionInput}
+                               onChange={(e) => setSection(e.target.value)}/>
+                        <Button className={styles.createSectionBtn} variant={'green'} onClick={saveNewSection}>
+                            Сохранить
+                        </Button>
+                    </div>
+                </Modal>
             </div>
-            <div className={styles.step}>
-                <div className={styles.stepsTitle}>
-                    <h3>Шаг 2:</h3>
-                    <p>Добавьте название и описание</p>
-                </div>
-                <div className={styles.fields}>
-                    <Input placeholder={'Название*'} value={record.title}
-                           onChange={(e) => setRecord({...record, title: e.target.value})}/>
-                    <TextArea className={styles.subtitle} placeholder={'Описание*'} value={record.subtitle}
-                              onChange={(e) => setRecord({...record, subtitle: e.target.value})}/>
-                </div>
-            </div>
-            <div className={styles.step}>
-                <div className={styles.stepsTitle}>
-                    <h3>Шаг 4:</h3>
-                    <p>Добавьте код, если нужно стили и описание</p>
-                </div>
-                <div className={styles.codeBlock}>
-                    <CodeEditor language={'js'} code={''}
-                                onChange={(value: string) => handleSnippetChange(value)}
-                    />
-                </div>
-                <div className={styles.btnBlock}>
-                    <Button className={styles.saveSnippetBtn} variant={'green'} onClick={saveSnippet}>
-                        Сохранить Сниппет
-                    </Button>
-                </div>
 
-            </div>
-        </div>
-        <Modal isOpen={isOpenModal} onClose={() => setIsOpenModal(false)}>
-            <div className={styles.createSection}>
-                <div className={styles.createSectionTitle}>Создание нового раздела</div>
-                <Input placeholder={'Название*'} value={section} className={styles.createSectionInput}
-                       onChange={(e) => setSection(e.target.value)}/>
-                <Button className={styles.createSectionBtn} variant={'green'} onClick={saveNewSection}>
-                    Сохранить
-                </Button>
-            </div>
-        </Modal>
-    </div>);
+            <AddRecordMenu saveSnippet={saveSnippet}/>
+        </>);
 };

@@ -2,17 +2,24 @@ import {queryKeys} from "@/react-query/constants";
 import { useQuery } from '@tanstack/react-query';
 
 export const getRecordsById = async (id: string)  => {
-    const res = await fetch(`${process.env.URL}/api/record/getById?id=${id}`, {
+    const url = `${process.env.NEXT_PUBLIC_URL}/api/record/getById?id=${id}`
+    const res = await fetch(url, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
         },
     })
+    if (!res.ok) {
+        console.log('Server responded with an error:', res.status, await res.text());
+        throw new Error(`HTTP error! status: ${res.status}`);
+    }
+
     return  res.json();
 }
 
-export function useGetRecords(id: string) {
-    const {data = []} = useQuery({
+export function useGetRecordsById(id: string) {
+
+    const {data = [], isPending} = useQuery({
         queryKey: [queryKeys.records, id],
         queryFn: async ({ queryKey }) => {
             const actualId = queryKey[1];

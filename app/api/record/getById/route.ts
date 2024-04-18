@@ -4,6 +4,7 @@ import {NextRequest} from "next/server";
 export async function GET(request: NextRequest) {
     try {
         const id = request.nextUrl.searchParams.get('id');
+
         if(!id) {
             return Response.json({ message: 'Возникла ошибка' }, { status: 500 });
 
@@ -13,6 +14,7 @@ export async function GET(request: NextRequest) {
                id
            }
         });
+
 
         return Response.json({record},{status: 200})
     }catch (error) {

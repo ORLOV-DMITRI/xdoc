@@ -1,17 +1,23 @@
+'use client'
 import styles from './index.module.scss'
 import Code from "@/components/ui/Code";
-import {getRecordsById} from "@/react-query/record/useGetRecordById";
+import {getRecordsById, useGetRecordsById} from "@/react-query/record/useGetRecordById";
 import {Record} from "@/types/types";
+import {RecordDetailMenu} from "@/components/RecordDetailMenu";
 
 
 
-export default async function RecordDetail({params}: { params: { id: string } }) {
-    const {record}: {record: Record} = await getRecordsById(params.id);
+export default  function RecordDetail({params}: { params: { id: string } }) {
 
 
+    const {record}: { record: Record } = useGetRecordsById(params.id);
 
-
+    if(!record) {
+        return <div>Loading</div>
+    }
     return (
+        <>
+
         <div className={styles.snippet}>
             <div className={styles.wrapper}>
                 <div className={styles.top}>
@@ -22,6 +28,10 @@ export default async function RecordDetail({params}: { params: { id: string } })
                     <Code code={record.snippet}/>
                 </div>
             </div>
+
+
         </div>
+            <RecordDetailMenu id={record.id}/>
+        </>
     );
 };

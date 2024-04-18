@@ -1,4 +1,6 @@
 import db from "../../../prisma/db";
+import {NextRequest} from "next/server";
+import {log} from "util";
 
 export async function POST(request: Request) {
     try {
@@ -48,6 +50,93 @@ export async function GET() {
         });
 
         return Response.json({sections},{status: 200})
+    }catch (error) {
+        console.error('Произошла ошибка:', error);
+        // @ts-ignore
+        return Response.json({ message: error.message || 'Возникла ошибка' }, { status: 500 });
+    }
+}
+export async function DELETE(request: NextRequest) {
+
+    try {
+        const id = request.nextUrl.searchParams.get('id');
+        if(!id) {
+            return Response.json({ message: 'Возникла ошибка' }, { status: 500 });
+        }
+        const section = await prisma?.sections.findFirst({
+            where: {
+                records: {
+                    some: {
+                        id: id
+                    }
+                }
+            },
+            include: {
+                records: true
+            }
+        });
+        if (!section) {
+            return new Response(JSON.stringify({ message: 'Секция с такой записью не найдена' }), { status: 404 });
+        }
+        const deletedRecord = await prisma?.record.delete({
+            where: {
+                id
+            }
+        })
+        if (!deletedRecord) {
+            return new Response(JSON.stringify({ message: 'Ошибка при удалении записи' }), { status: 500 });
+        }
+
+        if (section.records.length === 1) {
+            await prisma?.sections.delete({
+                where: {
+                    id: section.id
+                }
+            });
+        }
+        return Response.json({status: 200})
+    }catch (error) {
+        console.error('Произошла ошибка:', error);
+        // @ts-ignore
+        return Response.json({ message: error.message || 'Возникла ошибка' }, { status: 500 });
+    }
+}
+export async function PUT(request: Request) {
+
+    const data = await request.json();
+    try {
+        const section = await prisma?.sections.findFirst({
+            where: {
+                records: {
+                    some: {
+                        id: data.id
+                    }
+                }
+            },
+            include: {
+                records: true
+            }
+        });
+        if (!section) {
+            return new Response(JSON.stringify({ message: 'Секция с такой записью не найдена' }), { status: 404 });
+        }
+        const transaction = await prisma?.$transaction([
+           prisma?.record.update({
+                where: { id: data.id },
+                data: {
+                    ...data
+                }
+            }),
+
+        ]);
+        if (section.records.length === 1) {
+            await prisma?.sections.delete({
+                where: {
+                    id: section.id
+                }
+            });
+        }
+        return Response.json({status: 200})
     }catch (error) {
         console.error('Произошла ошибка:', error);
         // @ts-ignore

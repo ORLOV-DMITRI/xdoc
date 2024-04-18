@@ -77,8 +77,7 @@ export default function AuthModal({onClose}: AuthPageType) {
         <div className={styles.auth}>
             <div className={styles.content}>
 
-                <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}
-                >
+                <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
                     {() => (
                         <Form className={styles.form}>
                             <div className={styles.title}>{title} <span className={logoFonts.className}>XDOC</span>

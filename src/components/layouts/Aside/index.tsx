@@ -12,15 +12,24 @@ import {useGetRecords} from "@/react-query/record/useGetAllRecords";
 import {Section} from "@/types/types";
 import Link from "next/link";
 
-export default function Aside({sections} : {sections: Section[]}) {
+export default function Aside({sections}: { sections: Section[] }) {
     const [isOpenModal, setIsOpenModal] = useState(false)
     const path = usePathname()
-
     useOpenSearchModal(() => setIsOpenModal(true))
 
     const allSections = useGetRecords(sections)
 
     const sectionsArray: Section[] = allSections.sections;
+
+    const uuidRegex = /[a-f\d]{8}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{4}-[a-f\d]{12}/;
+
+
+    const extractIdFromPath = (path: string) => {
+        const match = path.match(uuidRegex);
+        return match ? match[0] : null;
+    };
+
+    const id = extractIdFromPath(path);
 
 
     return (
@@ -31,18 +40,19 @@ export default function Aside({sections} : {sections: Section[]}) {
                     <SearchButton onOpenModal={() => setIsOpenModal(true)}/>
                 </div>
                 <div className={cn(styles.info, path === '/' && styles.infoActive)}>
-                    <div className={cn(styles.infoItem)}>
+                    <Link href={'/'} className={cn(styles.infoItem)}>
                         <BookIcon/>
                         Введение
-                    </div>
+                    </Link>
                 </div>
                 <ul className={styles.categoryList}>
                     {sectionsArray.map(category => (
-                        <li  className={styles.category} key={category.id}>
+                        <li className={styles.category} key={category.id}>
                             <div className={styles.categoryName}>{category.name}</div>
                             <ul className={styles.categoryItems}>
                                 {category.records.map(item => (
-                                    <Link href={`/snippet/${item.id}`} className={styles.item} key={item.id}>
+                                    <Link href={`/snippet/${item.id}`}
+                                          className={cn(styles.item, item.id === id && styles.active)} key={item.id}>
                                         {item.title}
                                     </Link>
                                 ))}

@@ -13,19 +13,19 @@ type SelectType = {
 
 
 export default function Select({options, value, onChange, onSavedNew}: SelectType) {
-    const [selected, setSelected] = useState<string>(value ? value : options[0]?.name)
+    const selectedName = value ? value : options[0]?.name;
+    const [selected, setSelected] = useState<string>(selectedName)
     const [isOpen, setIsOpen] = useState<boolean>(false)
 
     const handleChange = (item: string) => {
         setSelected(item)
         onChange(item)
     }
-
     return (
         <div className={cn(styles.select, isOpen && styles.open)} onClick={() => setIsOpen(!isOpen)}>
 
             <div className={cn(styles.selectedItem)}>
-                {selected}
+                {selected ? selected : selectedName}
                 <ArrowIcon/>
             </div>
 
