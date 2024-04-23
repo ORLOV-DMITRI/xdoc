@@ -1,6 +1,15 @@
 @import "/public/styles/variables";
 
 
+.resultList {
+    padding: 10px 24px;
+    list-style: none;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+
 .search {
     background-color: rgb(30, 41, 59);
     min-height: 300px;
@@ -11,21 +20,19 @@
 
 .searchBar {
     padding: 0px 16px;
-    border-bottom: 1px solid rgba(226, 232, 240, 0.05)  ;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.05);
     display: flex;
     align-items: center;
-
 }
 
 .icon {
     svg {
         width: 17px;
         height: 17px;
-
         stroke: $white;
-
     }
 }
+
 .closeBtn {
     background-color: rgb(71, 85, 105);
     width: 35px;
@@ -35,8 +42,8 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-
 }
+
 .input {
     margin: 0 16px 0 16px;
     background-color: transparent;
@@ -47,6 +54,4 @@
     color: rgb(226, 232, 240);
     font-size: 16px;
     font-family: inherit;
-
-
 }

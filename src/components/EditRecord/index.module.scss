@@ -1,9 +1,21 @@
 @import "/public/styles/variables";
+@import "/public/styles/media";
 
-
-@import "/public/styles/variables";
-
-
+.createSection {
+    width: 400px;
+    border-radius: 10px;
+    background-color: $bg;
+    padding: 20px 35px 35px 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.createSectionBtn {
+    width: 100%;
+}
+.createSectionInput {
+    width: 100%;
+}
 .addPage {
     padding-top: 40px;
     width: 100%;

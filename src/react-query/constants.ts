@@ -1,5 +1,6 @@
 export const queryKeys = {
     user: "user",
     sections: 'sections',
-    records: 'records'
+    records: 'records',
+    search: 'search'
 };

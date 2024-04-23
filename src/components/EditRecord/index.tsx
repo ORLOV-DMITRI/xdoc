@@ -13,6 +13,9 @@ import {useEditRecord} from "@/react-query/record/useEditRecotd";
 import {useRouter} from "next/navigation";
 import Button from "@/components/ui/Button";
 import Modal from "@/components/ui/Modal";
+import useStringComparison from "@/hooks/useStringComparison";
+import {useAddRecord} from "@/react-query/record/useAddRecord";
+import {useAddSection} from "@/react-query/section/useAddSection";
 
 
 type EditPageType = {
@@ -27,6 +30,9 @@ export default function EditRecord({record}: EditPageType) {
     const [currentRecord, setCurrentRecord] = useState<Record>(record);
     const {mutate: editRecord} = useEditRecord()
     const sections = useGetSections()
+    const {compareStrings} = useStringComparison()
+    const {mutate: addSection} = useAddSection()
+
     const router = useRouter()
 
     useEffect(() => {
@@ -72,6 +78,7 @@ export default function EditRecord({record}: EditPageType) {
 
 
     }
+
     const saveNewSection = () => {
         if (section.trim() === '') {
             toast.error('Пожалуйста заполните название')
@@ -116,6 +123,7 @@ export default function EditRecord({record}: EditPageType) {
                         </div>
                         <div className={styles.section}>
                             <Select options={sections}
+                                    onSavedNew={() => setIsOpenModal(true)}
                                     value={currentSection?.name ? currentSection.name : ''}
                                     onChange={(targetSection: string) => handleUpdateSection(targetSection)}
                             />

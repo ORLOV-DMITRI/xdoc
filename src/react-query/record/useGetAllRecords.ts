@@ -16,7 +16,8 @@ export function useGetRecords(placeholderData: Section[]) {
     const {data = [], error, isError, isLoading, isPlaceholderData} = useQuery({
         queryKey: [queryKeys.records],
         queryFn: getRecords,
-        placeholderData: placeholderData
+        placeholderData: placeholderData,
+        
     });
     return data;
 }

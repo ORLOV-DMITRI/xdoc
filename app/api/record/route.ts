@@ -1,6 +1,5 @@
 import db from "../../../prisma/db";
 import {NextRequest} from "next/server";
-import {log} from "util";
 
 export async function POST(request: Request) {
     try {

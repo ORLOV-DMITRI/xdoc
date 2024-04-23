@@ -18,6 +18,7 @@
     "formik": "^2.4.5",
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
     "next": "14.1.0",
     "next-plugin-svgr": "^1.1.10",
     "prism-react-renderer": "^2.3.1",
