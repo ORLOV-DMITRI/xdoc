@@ -8,6 +8,7 @@ import {Gruppo} from "next/font/google";
 import {useRegister} from "@/react-query/auth/useRegister";
 import FormikInput from "@/components/ui/FormikInput";
 import {useLogIn} from "@/react-query/auth/useLogin";
+import toast from "react-hot-toast";
 
 type AuthPageType = {
     onClose: () => void
@@ -59,7 +60,7 @@ export default function AuthModal({onClose}: AuthPageType) {
 
 
     const {mutate: register} = useRegister()
-    const {mutate: login} = useLogIn()
+    const {mutate: login, isError} = useLogIn()
 
 
     const handleSubmit = (values: FormValues, {resetForm}: FormikHelpers<FormValues>) => {
@@ -69,7 +70,12 @@ export default function AuthModal({onClose}: AuthPageType) {
                 resetForm();
                 router.refresh()
                 onClose()
+                toast.success(currentPage === 'signIn' ? `Успешная авторизация` : '`Успешная регистрация`')
+
             },
+            onError: (error) => {
+                toast.success(error.message)
+            }
         });
     }
 

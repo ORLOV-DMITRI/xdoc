@@ -18,10 +18,9 @@ export const loginUser = async (userData: SignUpType) :  Promise<{id: string, em
 export const useLogIn = () => {
     const queryClient = useQueryClient();
 
-    const {mutate} = useMutation({
+    const {mutate, status, isError} = useMutation({
         mutationFn: (userData: SignUpType) => loginUser(userData),
         onSuccess: ({token}: SignUpResponse) => {
-            toast.success(`Успешная авторизация`)
             Cookies.set('token', token, {expires: 30});
             queryClient.invalidateQueries({queryKey: [queryKeys.user]});
 
@@ -31,6 +30,6 @@ export const useLogIn = () => {
             toast.error(`Ошибка! ${error}`)
         }
     })
-    return {mutate}
+    return {mutate, status, isError}
 };
 
