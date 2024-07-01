@@ -2,7 +2,7 @@ import {queryKeys} from "@/react-query/constants";
 import { useQuery } from '@tanstack/react-query';
 
 export const getRecordsById = async (id: string)  => {
-    const url = `${process.env.NEXT_PUBLIC_URL}/api/record/getById?id=${id}`
+    const url = `/api/record/getById?id=${id}`
     const res = await fetch(url, {
         method: 'GET',
         headers: {

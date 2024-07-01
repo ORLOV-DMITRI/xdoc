@@ -18,21 +18,13 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({children}: Readonly<{ children: ReactNode; }>) {
 
-    
-    const res = await fetch(process.env.NEXT_PUBLIC_URL + '/api/record', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
-    const sections = await res.json();
     return (
         <html lang="en">
         <body className={ibmPlexMono.className}>
         <Providers>
             <Header/>
             <div className={'container main'}>
-                <Aside sections={sections}/>
+                <Aside/>
                 <div className={'content'}>
                     {children}
                 </div>

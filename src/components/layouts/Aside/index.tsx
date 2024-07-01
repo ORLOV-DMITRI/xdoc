@@ -11,13 +11,15 @@ import useOpenSearchModal from "@/hooks/useOpenSearchModal";
 import {useGetRecords} from "@/react-query/record/useGetAllRecords";
 import {Section} from "@/types/types";
 import Link from "next/link";
+import {useGetSections} from "@/react-query/section/useGetSections";
 
-export default function Aside({sections}: { sections: Section[] }) {
+export default function Aside() {
+    const sections = useGetSections()
     const [isOpenModal, setIsOpenModal] = useState(false)
     const path = usePathname()
     useOpenSearchModal(() => setIsOpenModal(true))
 
-    const allSections = useGetRecords(sections)
+    const allSections = useGetRecords()
 
     const sectionsArray: Section[] = allSections.sections;
 

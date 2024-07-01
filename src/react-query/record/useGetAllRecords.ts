@@ -12,11 +12,10 @@ export const getRecords = async ()  => {
     return res.json();
 }
 
-export function useGetRecords(placeholderData: Section[]) {
+export function useGetRecords() {
     const {data = [], error, isError, isLoading, isPlaceholderData} = useQuery({
         queryKey: [queryKeys.records],
         queryFn: getRecords,
-        placeholderData: placeholderData,
         
     });
     return data;
