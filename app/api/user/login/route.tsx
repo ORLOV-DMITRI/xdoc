@@ -30,7 +30,7 @@ export async function POST(request: Request) {
             return Response.json({message: 'Ошилбка Логина или Пароля'}, {status: 400})
         }
     } catch (error) {
-        console.log(error)
+        return Response.json({ message: 'Неверный токен', status: 400 }, { status: 400 });
     }
 
 

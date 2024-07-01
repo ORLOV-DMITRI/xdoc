@@ -70,10 +70,8 @@ export default function AuthModal({onClose}: AuthPageType) {
                 resetForm();
                 router.refresh()
                 onClose()
-                toast.success(currentPage === 'signIn' ? `Успешная авторизация` : '`Успешная регистрация`')
-
             },
-            onError: (error) => {
+            onError: (error) => {                
                 toast.success(error.message)
             }
         });

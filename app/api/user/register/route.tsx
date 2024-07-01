@@ -3,7 +3,9 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 export async function POST(request: Request) {
-    const {email, password} = await request.json()
+
+    try {
+        const {email, password} = await request.json()
 
 
     if (!email || !password) {
@@ -37,5 +39,11 @@ export async function POST(request: Request) {
 
 
     return Response.json({id: newUser.id, email: newUser.email, token,}, {status: 201})
+    } catch (error) {
+        console.error('JWT Error:', error);
+        return Response.json({ message: 'Неверный токен', status: 400 }, { status: 400 });
+    }
+
+    
 
 }

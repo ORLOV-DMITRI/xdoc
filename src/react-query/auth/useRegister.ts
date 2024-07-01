@@ -13,7 +13,10 @@ export const registerUser = async (newUserData: SignUpType) :  Promise<{id: stri
         },
         body: JSON.stringify(newUserData),
     })
-    return res.json();
+    const responseJson = await res.json();
+        console.log(responseJson);
+        
+    return responseJson
 }
 
 export const useRegister = () => {
@@ -23,10 +26,16 @@ export const useRegister = () => {
 
         mutationFn: (newUserData: SignUpType) => registerUser(newUserData),
 
-        onSuccess: ({token}: SignUpResponse) => {
-            queryClient.invalidateQueries({queryKey: [queryKeys.user]});
-            Cookies.set('token', token, {expires: 30}); // Сохраняем токен в куки на 7 дней
-
+        onSuccess: (response: SignUpResponse) => {
+            if (response?.message) {
+                toast.error(response.message)
+            } else {
+                if (response.token !== undefined && response.token !== 'undefined') {
+                    queryClient.invalidateQueries({queryKey: [queryKeys.user]});
+                    Cookies.set('token', response.token, {expires: 30}); // Сохраняем токен в куки на 7 дней
+                    toast.success(`Успешная регистрация`)
+                }
+            }
         },
         onError: (error) => {
             toast.error(`Ошибка! ${error}`)

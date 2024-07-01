@@ -23,6 +23,7 @@ export type SignUpResponse = {
     id: string;
     email: string;
     token: string;
+    message?: string
 }
 export interface Root {
     sections: Section[]
