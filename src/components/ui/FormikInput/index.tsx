@@ -16,10 +16,10 @@ export default function FormikInput({label, className, ...props}:FormikInputType
 
         <div className={cn(styles.field, className,
             error && touched && error && styles.field_error)}>
-            <label htmlFor='field'>
+            <label>
                 {label}
             </label>
-            <input type={props.type} {...field} name={props.name} placeholder={props.placeholder} id={'field'}
+            <input type={props.type} {...field} name={props.name} placeholder={props.placeholder} 
                    className={styles.input}/>
             <div className={styles.error}>{error && touched && error}</div>
 

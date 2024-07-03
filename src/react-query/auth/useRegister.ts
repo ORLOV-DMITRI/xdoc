@@ -14,8 +14,6 @@ export const registerUser = async (newUserData: SignUpType) :  Promise<{id: stri
         body: JSON.stringify(newUserData),
     })
     const responseJson = await res.json();
-        console.log(responseJson);
-        
     return responseJson
 }
 
@@ -31,8 +29,8 @@ export const useRegister = () => {
                 toast.error(response.message)
             } else {
                 if (response.token !== undefined && response.token !== 'undefined') {
-                    queryClient.invalidateQueries({queryKey: [queryKeys.user]});
                     Cookies.set('token', response.token, {expires: 30}); // Сохраняем токен в куки на 7 дней
+                    queryClient.invalidateQueries({queryKey: [queryKeys.user]});
                     toast.success(`Успешная регистрация`)
                 }
             }
