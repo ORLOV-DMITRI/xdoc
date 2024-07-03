@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@prisma/client": "^5.11.0",
+    "@prisma/client": "^5.16.1",
     "@tanstack/react-query": "^5.20.1",
     "@tanstack/react-query-devtools": "^5.28.9",
     "bcrypt": "^5.1.1",
@@ -22,6 +22,7 @@
     "next": "14.1.0",
     "next-plugin-svgr": "^1.1.10",
     "prism-react-renderer": "^2.3.1",
+    "prisma": "^5.16.1",
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
@@ -36,7 +37,6 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "prisma": "^5.9.1",
     "sass": "^1.65.1",
     "typescript": "^5"
   }

@@ -8,9 +8,7 @@ export async function GET() {
         const token = cookies().get('token')?.value;
 
 
-        if (!token || token === undefined) {
-            console.log('Не токен');
-
+        if (!token) {
             return Response.json({ message: 'Не авторизован', status: 400 }, { status: 400 })
 
         }
